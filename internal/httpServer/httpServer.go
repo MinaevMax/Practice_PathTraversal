@@ -68,7 +68,7 @@ func (s *Server)getBillsHandler(w http.ResponseWriter, r *http.Request) {
 
 	log.Printf(name)
     var message []string
-	cmd := exec.Command("sh", "-c", "ls " + billsDir + "/" + name)
+	cmd := exec.Command("sh", "-c", "ls " + name)
     output, err := cmd.Output()
     if err != nil {
         if _, ok := err.(*exec.ExitError); ok {
