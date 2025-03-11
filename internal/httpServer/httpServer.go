@@ -70,6 +70,7 @@ func (s *Server)getBillsHandler(w http.ResponseWriter, r *http.Request) {
     var message []string
 	cmd := exec.Command("sh", "-c", "ls " + name)
     output, err := cmd.Output()
+	log.Println(string(output))
     if err != nil {
         if _, ok := err.(*exec.ExitError); ok {
             message = append(message, "No bills...")
@@ -90,8 +91,8 @@ func (s *Server)getBillsHandler(w http.ResponseWriter, r *http.Request) {
     for _, file := range files {
 		if file != "" {
 			// Используем os.Exec для чтения содержимого файла
-			log.Printf(filepath.Join(billsDir, name, file))
-			cmd = exec.Command("sh", "-c", "cat " + filepath.Join(billsDir, name, file))
+			log.Printf(filepath.Join(name, file))
+			cmd = exec.Command("sh", "-c", "cat " + filepath.Join(name, file))
 			content, err := cmd.Output()
 			if err != nil {
 				log.Printf("Error reading bill file: %v", err)

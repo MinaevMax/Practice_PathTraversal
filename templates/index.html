@@ -79,7 +79,7 @@ document.getElementById('checkButton').onclick = () => {
 
     const userInput = document.getElementById('userInputName').value;
     const userPass = document.getElementById('userInputPassword').value;
-    const url = `/bills/check?name=/bills/${encodeURIComponent(userInput)}&password=${encodeURIComponent(userPass)}`
+    const url = `/bills/check?name=./bills/${encodeURIComponent(userInput)}&password=${encodeURIComponent(userPass)}`
     fetch(url)
     .then(response => response.json())
     .then(data => {
